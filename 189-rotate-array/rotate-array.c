@@ -13,7 +13,6 @@ void rotate(int* nums, int numsSize, int k) {
     k = k % numsSize;
     int temp;
     if(k == numsSize/2.0){
-        printf("hi");
         for(int i=0; i<k; i++){
             temp = nums[i];
             nums[i] = nums[i+k];
