@@ -6,11 +6,9 @@ class Solution {
             if(buy > prices[i]) {
                 buy = prices[i];
             }
-            if(prices[i] > buy) {
+            else {
                 temp = prices[i] - buy;
-                if(temp > profit) {
-                    profit = temp;
-                }
+                profit = (temp>profit)?temp:profit;
             }
         }
         return profit;
