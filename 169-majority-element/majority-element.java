@@ -4,16 +4,14 @@ class Solution {
         int count=0,res=0, majority=0, n = nums.length;
         for(int i=0; i<n; i++) {
             if(map.containsKey(nums[i])) {
-                count = map.get(nums[i]) + 1;
-                map.put(nums[i], count);
+                map.put(nums[i], map.get(nums[i]) + 1);
                 
             }
             else {
                 map.put(nums[i], 1);
-                count = 1;
             }
-            if(count > majority) {
-                majority = count;
+            if(map.get(nums[i]) > majority) {
+                majority = map.get(nums[i]);
                 res = nums[i];
             }
         }
