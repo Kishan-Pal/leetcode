@@ -36,7 +36,6 @@ class Solution {
             }
             
         }
-        System.out.println(k);
         if(k >= 2)
             return res[2];
         else
