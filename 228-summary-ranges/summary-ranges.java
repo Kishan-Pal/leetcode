@@ -6,10 +6,7 @@ class Solution {
 
         int i=0, j=0;
         while(j<n-1) {
-            if(nums[j] == nums[j+1] - 1){
-                j = j + 1;
-            }
-            else {
+            if(nums[j] != nums[j+1] - 1) {
                 if(i == j) {
                     ranges.add(Integer.toString(nums[i]));
                 }
@@ -17,8 +14,9 @@ class Solution {
                     ranges.add(Integer.toString(nums[i]) + "->" + Integer.toString(nums[j]));
                 }
                 i = j + 1;
-                j = j + 1;
+                
             }
+            j = j + 1;
         }
         if(i == j) {
             ranges.add(Integer.toString(nums[i]));
