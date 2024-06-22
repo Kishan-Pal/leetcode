@@ -1,11 +1,21 @@
 class Solution {
+
+    
     public int distributeCandies(int[] candyType) {
-        Set<Integer> set = new HashSet<>();
-        for(int i: candyType) {
-            set.add(i);
+        final boolean[] containsType = new boolean[200001]; // 2 * Math.pow(10, 5) + 1
+        final int maxCount = candyType.length / 2;
+        int counter = 0;
+        for (int i = 0; i < candyType.length; i++) {
+            final int type = candyType[i];
+            if (!containsType[100000 + type]) {
+                containsType[100000 + type] = true;
+                counter++;
+
+                if (counter > maxCount) {
+                    return maxCount;
+                }
+            }            
         }
-        int by2 = candyType.length/2;
-        int size = set.size();
-        return ((by2 < size)? by2: size);
+        return counter;
     }
 }
