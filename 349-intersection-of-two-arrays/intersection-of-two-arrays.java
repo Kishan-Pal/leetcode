@@ -13,8 +13,9 @@ class Solution {
                     intersec.add(i);
             }
         }
-        int[] a = new int[intersec.size()];
-        for(int i=0; i<intersec.size(); i++) {
+        int n = intersec.size();
+        int[] a = new int[n];
+        for(int i=0; i<n; i++) {
             a[i] = intersec.get(i);
         }
         return a;
