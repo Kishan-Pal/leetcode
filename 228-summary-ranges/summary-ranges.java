@@ -1,27 +1,31 @@
 class Solution {
     public List<String> summaryRanges(int[] nums) {
         List<String> ranges = new ArrayList<>();
-        int count=0, pre=0, i, n = nums.length;
+        int n = nums.length;
         if(n==0) return ranges;
-        for(i=1; i<n; i++) {
-            if(nums[i-1] == nums[i] - 1) {
-                count = 1;
+
+        int i=0, j=0;
+        while(j<n-1) {
+            if(nums[j] == nums[j+1] - 1){
+                j = j + 1;
             }
             else {
-                if(count == 0) {
-                    ranges.add(Integer.toString(nums[pre]));
+                if(i == j) {
+                    ranges.add(Integer.toString(nums[i]));
                 }
                 else {
-                    ranges.add(Integer.toString(nums[pre]) + "->" + Integer.toString(nums[i-1]));
+                    ranges.add(Integer.toString(nums[i]) + "->" + Integer.toString(nums[j]));
                 }
-                count = 0;
-                pre = i;
+                i = j + 1;
+                j = j + 1;
             }
         }
-        if(count == 0)
-            ranges.add(Integer.toString(nums[pre]));
-        else
-             ranges.add(Integer.toString(nums[pre]) + "->" + Integer.toString(nums[i-1]));
+        if(i == j) {
+            ranges.add(Integer.toString(nums[i]));
+        }
+        else {
+            ranges.add(Integer.toString(nums[i]) + "->" + Integer.toString(nums[j]));
+        }
         return ranges;
     }
 }
