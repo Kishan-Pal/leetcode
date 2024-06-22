@@ -6,9 +6,8 @@ class Solution {
         j = i+1;
         while(j < n) {
             if(nums[j] != 0) {
-                nums[i] = nums[i] ^ nums[j];
-                nums[j] = nums[i] ^ nums[j];
-                nums[i] = nums[i] ^ nums[j];
+                nums[i] = nums[j];
+                nums[j] = 0;
                 i = i + 1;
             }
             j = j + 1;
