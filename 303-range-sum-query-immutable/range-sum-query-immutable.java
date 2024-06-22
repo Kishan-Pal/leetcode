@@ -1,16 +1,21 @@
 class NumArray {
     int[] nums;
+    ArrayList<Integer> sum;
     public NumArray(int[] nums) {
         this.nums = nums;
-    }
-    
-    public int sumRange(int left, int right) {
-        int sum=0;
-        while(left <= right) {
-            sum = sum + this.nums[left];
-            left = left + 1;
+        this.sum = new ArrayList<>();
+        int n = nums.length, temp = 0;
+        for(int i=0; i<n; i++){
+            temp = temp + nums[i];
+            sum.add(temp);
         }
-        return sum;
+    }
+    //-2, -2, 1, -4, -2, -3
+    public int sumRange(int left, int right) {
+        if(left == 0) 
+            return this.sum.get(right);
+        else
+            return this.sum.get(right) - this.sum.get(left-1);
     }
 }
 
