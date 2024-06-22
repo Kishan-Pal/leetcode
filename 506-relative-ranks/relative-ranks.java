@@ -10,10 +10,12 @@ class Solution {
 
         if(n==1) {
             result[hash.get(score[n-1])] = "Gold Medal";
+            return result;
         }
         if(n==2) {
             result[hash.get(score[n-1])] = "Gold Medal";
             result[hash.get(score[n-2])] = "Silver Medal";
+            return result;
 
         }
         if(n>=3) {
