@@ -1,37 +1,22 @@
 class Solution {
     public String[] findWords(String[] words) {
-        String top = "qwertyuiopQWERTYUIOP"; int n1 = 20;
-        String mid = "asdfghjklASDFGHJKL"; int n2 = 18;
-        String bot = "zxcvbnmZXCVBNM"; int n3 = 14;
-        HashMap<Character, Integer> hash = new HashMap<>();
-        List<String> res = new ArrayList<>();
-        for(int i=0; i<n1; i++) {
-            hash.put(top.charAt(i), 1);
-        }
-        for(int i=0; i<n2; i++) {
-            hash.put(mid.charAt(i), 2);
-        }
-        for(int i=0; i<n3; i++) {
-            hash.put(bot.charAt(i), 3);
-        }
-        //hash.forEach((key, value) -> System.out.println(key + " " + value));
-        for(String i: words) {
-            int j, n = i.length();
-            for(j=0; j<n-1; j++){
-                //System.out.println(i.charAt(j) + " " + hash.get(i.charAt(j)));
-                //System.out.println(i.charAt(j+1) + " " + hash.get(i.charAt(j+1)));
-                if(hash.get(i.charAt(j)) != hash.get(i.charAt(j+1))) break;
+        ArrayList<String> list = new ArrayList<>();
+        for(int i=0;i<words.length;i++){
+            String word = words[i];
+            int length1 = 0;int length2 = 0;int length3 = 0;
+            for(int j=0;j<word.length();j++){
+                char a = Character.toLowerCase(word.charAt(j));
+                if("qwertyuiop".contains(a+""))length1++;
+                if("asdfghjkl".contains(a+""))length2++;
+                if("zxcvbnm".contains(a+""))length3++;
+                
             }
-            if(j == n-1) res.add(i);
-            System.out.println(j);
+            if(length1 == word.length()||length2 == word.length()||length3 == word.length()){
+                list.add(word);
+            }
         }
-        int n = res.size();
-        String[] result = new String[n];
-        for(int i=0; i<n; i++) {
-            result[i] = res.get(i);
-        }
-        return result;
-
-
+        String[] arr = new String[list.size()];
+        arr = list.toArray(arr);
+        return arr;
     }
 }
