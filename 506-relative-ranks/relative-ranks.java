@@ -8,20 +8,24 @@ class Solution {
         }
         Arrays.sort(score);
 
-        for(int i=0; i<n; i++) {
-            if(i==n-1) {
-                result[hash.get(score[i])] = "Gold Medal";
-            }
-            else if(i==n-2) {
-                result[hash.get(score[i])] = "Silver Medal";
-            }
-            else if(i==n-3) {
-                result[hash.get(score[i])] = "Bronze Medal";
-            }
-            else {
+        if(n==1) {
+            result[hash.get(score[n-1])] = "Gold Medal";
+        }
+        if(n==2) {
+            result[hash.get(score[n-1])] = "Gold Medal";
+            result[hash.get(score[n-2])] = "Silver Medal";
+
+        }
+        if(n>=3) {
+            result[hash.get(score[n-1])] = "Gold Medal";
+            result[hash.get(score[n-2])] = "Silver Medal";
+            result[hash.get(score[n-3])] = "Bronze Medal";
+
+        }
+        for(int i=0; i<n-3; i++) {
+            
                 result[hash.get(score[i])] = n-i + "";
 
-            }
 
         }
         return result;
