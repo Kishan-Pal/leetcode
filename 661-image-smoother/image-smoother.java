@@ -1,21 +1,15 @@
 class Solution {
     public int[][] imageSmoother(int[][] img) {
         int m = img.length, n = img[0].length;
-        int count = 0;
-        int sum = 0;
-        boolean ig;
-        boolean il;
-        boolean jg;
-        boolean jl;
         int[][] res = new int[m][n];
         for(int i=0; i<m; i++) {
             for(int j=0; j<n; j++) {
-                count = 0;
-                sum = 0;
-                ig = i>0;
-                il = i<m-1;
-                jg = j>0;
-                jl = j<n-1;
+                int count = 0;
+                int sum = 0;
+                boolean ig = i>0;
+                boolean il = i<m-1;
+                boolean jg = j>0;
+                boolean jl = j<n-1;
                 if(ig){
                     sum = sum + img[i-1][j];
                     count = count + 1;
