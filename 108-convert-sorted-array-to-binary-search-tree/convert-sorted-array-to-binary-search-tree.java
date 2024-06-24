@@ -19,12 +19,11 @@ class Solution {
             return null;
         }
         int mid = (int)(s+e)/2;
-        TreeNode r = new TreeNode(
+        return new TreeNode(
             nums[mid],
             arrayToBst(nums, s, mid-1),
             arrayToBst(nums, mid+1, e)
         );
-        return r;
         
 
     }
