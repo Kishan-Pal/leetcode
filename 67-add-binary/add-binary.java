@@ -4,7 +4,6 @@ class Solution {
         int i=n-1, j=m-1;
         String res = "";
         while(i >= 0 && j >= 0) {
-            System.out.println((a.charAt(i) - '0') + " " + (b.charAt(j) - '0'));
             sum = (a.charAt(i) - '0') + (b.charAt(j) - '0') + carry;
             res = (sum % 2) + res;
             carry = sum / 2;
@@ -26,7 +25,6 @@ class Solution {
         if(carry == 1) {
             res = 1 + res;
         }
-        System.out.println(carry);
         return res;
     }
 }
