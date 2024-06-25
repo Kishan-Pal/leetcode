@@ -10,41 +10,34 @@ class Solution {
     }
 
     public String simplifyPath(String path) {
-        Stack<String> stack = new Stack<>();
-        ArrayList<String> myList = new ArrayList<>();
-        for(String i: path.split("/", -2)) {
-            if(i.compareTo("")!=0 && i.compareTo(" ")!=0 && i.compareTo(".") != 0){
-                myList.add(i);
-                //System.out.print(what(i) + " ");
+        List<String> res = new ArrayList<>();
+        int n = path.length(), i=1, top = -1;
+        String temp = "", result = "";
+        while(i < n) {
+            while(i < n && path.charAt(i) != '/') {
+                temp = temp + path.charAt(i);
+                i = i + 1;
             }
-                
-        }
-        for(String i: myList){
-            System.out.println(i);
-            if(what(i) == 1){
-                stack.push(i);
-                //System.out.println(stack.peek());
+            if(temp.compareTo("..") == 0) {
+                temp = "";
+                if(top >= 0){
+                    res.remove(top);
+                    top = top - 1;
+                }
+            } 
+            else if(temp != "" && temp.compareTo(".") != 0) {
+                res.add(temp);
+                top = top + 1;
             }
-            else if(what(i) == -1 && !stack.isEmpty()){
-                stack.pop();
-                //System.out.println(stack.peek());
-            }
+            temp = "";
+            i = i + 1;
         }
-
-        String a = "";
-        while(!stack.isEmpty()) {
-
-            a = "/" + stack.pop() + a;
-            System.out.print(a);
+        int size = res.size();
+        if(size == 0) return "/";
+        for(int k=0; k<size; k++) {
+            result += "/" + res.get(k);
         }
-        
-        if(a.compareTo("") == 0){
-            return "/";
-
-        }
-        else {
-             return a;
-        }
+        return result;
        
     }
 }
