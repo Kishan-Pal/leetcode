@@ -49,7 +49,6 @@ class Solution {
                 i2 = i-1;
                 j2 = j;
             }
-            min = (min < j-i+1? min: j-i+1);
             //System.out.println(i + " " + j);
         }
         //System.out.println(min);
