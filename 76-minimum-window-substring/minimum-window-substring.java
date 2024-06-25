@@ -28,7 +28,6 @@ class Solution {
                 i2 = i;
                 j2 = j;
             }
-            min = (min < j-i? min: j-i);
             //System.out.println(i + " " + j);
             while(i<j){
                 c = s.charAt(i);
