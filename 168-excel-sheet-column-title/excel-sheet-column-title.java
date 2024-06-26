@@ -12,6 +12,11 @@ class Solution {
             }
             else {
                 res = a[temp-1] + res;  
+
+
+
+
+                
             }
             columnNumber /= 26;
             
