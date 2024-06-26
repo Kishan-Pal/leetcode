@@ -2,9 +2,8 @@ class Solution {
     public boolean isIsomorphic(String s, String t) {
         int[] hs = new int[200];
         int[] ht = new int[200];
-        int n = s.length();
         int j=1, k=1, temp1, temp2;
-        for(int i=0; i<n; i++) {
+        for(int i=0; i<s.length(); i++) {
             char c1 = s.charAt(i);
             temp1 = hs[(int)c1] = (hs[(int)c1] == 0? j++: hs[(int)c1]);
             char c2 = t.charAt(i);
