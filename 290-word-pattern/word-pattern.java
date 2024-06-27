@@ -8,6 +8,7 @@ class Solution {
             st = ed = ed + 1;
             while(ed < s.length() && s.charAt(ed) != ' ') ed++;
             temp = s.substring(st, ed);
+            //System.out.println(temp);
             if(a[(int)pattern.charAt(i)] > 0 && hash.containsKey(temp)){
                 if(pattern.charAt(i) != hash.get(temp)) return false;
             }
@@ -17,6 +18,7 @@ class Solution {
             }
             else return false;
         }
+        //System.out.println(s.length() + " " + ed);
         if(s.length() != ed || i < pattern.length()) return false;
         return true;
     }
