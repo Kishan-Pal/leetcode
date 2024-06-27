@@ -15,22 +15,27 @@
  */
 
 class Solution {
-    public void dfs(TreeNode root, String path, List<String> res) {
+    public void dfs(TreeNode root, StringBuilder path, List<String> res) {
+        if(root == null) return;
+
+        int len = path.length();
+        path.append(root.val);
+
         if(root.left == null && root.right == null) {
-            path = path + root.val;
-            res.add(path);
-            return;
+            res.add(path.toString());
         }
-        path = path + root.val + "->";
-        if(root.left != null)
+        else {
+            path.append("->");
             this.dfs(root.left, path, res);
-        if(root.right != null)
             this.dfs(root.right, path, res);
+        }
+        path.setLength(len);
     }
 
     public List<String> binaryTreePaths(TreeNode root) {
+        StringBuilder path = new StringBuilder();
         List<String> res = new ArrayList<>();
-        this.dfs(root, "", res);
+        this.dfs(root, path, res);
         return res;
         
     }
