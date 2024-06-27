@@ -15,6 +15,13 @@
  */
 
 class Solution {
+    public List<String> binaryTreePaths(TreeNode root) {
+        StringBuilder path = new StringBuilder();
+        List<String> res = new ArrayList<>();
+        this.dfs(root, path, res);
+        return res;
+        
+    }
     public void dfs(TreeNode root, StringBuilder path, List<String> res) {
         if(root == null) return;
 
@@ -30,13 +37,5 @@ class Solution {
             this.dfs(root.right, path, res);
         }
         path.setLength(len);
-    }
-
-    public List<String> binaryTreePaths(TreeNode root) {
-        StringBuilder path = new StringBuilder();
-        List<String> res = new ArrayList<>();
-        this.dfs(root, path, res);
-        return res;
-        
     }
 }
