@@ -3,7 +3,9 @@ class Solution {
         Arrays.sort(nums);
         HashSet<List<Integer>> result = new HashSet<>();
         for(int k=0; k<nums.length-3; k++) {
+            if(k != 0 && nums[k] == nums[k-1]) continue;
             for(int i=k+1;i<nums.length-2;i++){
+                if(i > k+1 && nums[i] == nums[i-1]) continue;
                 int left = i+1;
                 int right = nums.length-1;
                 while(left<right){
