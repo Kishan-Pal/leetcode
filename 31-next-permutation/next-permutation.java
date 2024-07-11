@@ -9,7 +9,7 @@ class Solution {
         if(j==0) return;
         int num = nums[j-1];
         int k = j;
-        while(k < nums.length && num >= nums[k]) k++;
+        while(num >= nums[k]) k++;
         
         nums[j-1] = nums[k];
         nums[k] = num;
