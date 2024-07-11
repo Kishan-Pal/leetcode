@@ -11,8 +11,7 @@ class Solution {
         int k = j;
         while(k < nums.length && num >= nums[k]) k++;
         
-            nums[j-1] = nums[k];
-            nums[k] = num;
-        
+        nums[j-1] = nums[k];
+        nums[k] = num;
     }
 }
