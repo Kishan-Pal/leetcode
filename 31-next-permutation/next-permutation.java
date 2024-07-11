@@ -10,9 +10,9 @@ class Solution {
         int num = nums[j-1];
         int k = j;
         while(k < nums.length && num >= nums[k]) k++;
-        if(k != nums.length){
+        
             nums[j-1] = nums[k];
             nums[k] = num;
-        }
+        
     }
 }
