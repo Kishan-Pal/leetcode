@@ -32,9 +32,6 @@ class Solution {
                 limit++;
             }
         }
-        for(int num: res) {
-            System.out.println(num);
-        }
         if(k==0) return 0;
         if((nums1.length + nums2.length)%2 == 0) return (res[k-1] + res[k-2])/2.0;
         return res[k-1];
