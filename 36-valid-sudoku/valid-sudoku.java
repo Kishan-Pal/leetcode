@@ -7,10 +7,10 @@ class Solution {
 
     public boolean isValidRows(char[][] board) {
         for(int i=0; i<9; i++) {
-            int[] hash = new int[256];
+            boolean[] hash = new boolean[256];
             for(int j=0; j<9; j++) {
-                if(board[i][j] != '.' && hash[(int)board[i][j]] == 1) return false;
-                else hash[(int)board[i][j]] = 1;
+                if(board[i][j] != '.' && hash[(int)board[i][j]]) return false;
+                else hash[(int)board[i][j]] = true;
             }
         }
         return true;
@@ -18,10 +18,10 @@ class Solution {
 
     public boolean isValidCols(char[][] board) {
         for(int i=0; i<9; i++) {
-            int[] hash = new int[256];
+            boolean[] hash = new boolean[256];
             for(int j=0; j<9; j++) {
-                if(board[j][i] != '.' && hash[(int)board[j][i]] == 1) return false;
-                else hash[(int)board[j][i]] = 1;
+                if(board[j][i] != '.' && hash[(int)board[j][i]]) return false;
+                else hash[(int)board[j][i]] = true;
             }
         }
         return true;
@@ -37,11 +37,11 @@ class Solution {
     }
 
     public boolean isValidGrid(char[][] board, int centeri, int centerj) {
-        int[] hash = new int[256];
+        boolean[] hash = new boolean[256];
         for(int i=centeri-1; i<=centeri+1; i++) {
             for(int j=centerj-1; j<=centerj+1; j++) {
-                if(board[i][j] != '.' && hash[(int)board[i][j]] == 1) return false;
-                else hash[(int)board[i][j]] = 1;
+                if(board[i][j] != '.' && hash[(int)board[i][j]]) return false;
+                else hash[(int)board[i][j]] = true;
             }
         }
         return true;
