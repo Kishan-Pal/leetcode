@@ -31,24 +31,35 @@ class Solution {
     public boolean canBePlaced(char[][] board, int i, int j, char num) {
         int tempj = 0, tempi = 0;
         while(tempj < 9) {
+            //System.out.print(board[tempi][tempj] + " ");
             if(board[i][tempj] == num) return false;
             tempj++;
         }
+        //System.out.println();
         tempj = j;
+        //tempi = i;
         while(tempi < 9) {
+            //System.out.print(board[tempi][tempj] + " ");
             if(board[tempi][tempj] == num) return false;
             tempi++;
         }
-        int limi, limj, startj;
-        i = i - (i % 3);
+        //System.out.println();
+        //tempi = i;
+        int limi, limj, startj, newi, newj;
+        newi = i - (i % 3);
         startj = j - (j % 3);
-        limi = i + 3;
+        limi = newi + 3;
         limj = startj + 3;
-        for(; i < limi; i++) {
-            for(j=startj; j < limj; j++) {
-                if(board[i][j] == num) return false;
+        for(; newi < limi; newi++) {
+            if(newi == i) continue;
+            for(newj=startj; newj < limj; newj++) {
+                //System.out.print(board[i][j] + " ");
+                //System.out.println(i + " " + j );
+                if(newj == j) continue;
+                if(board[newi][newj] == num) return false;
             }
         }
+        //System.out.println();
         return true;
     }
 
