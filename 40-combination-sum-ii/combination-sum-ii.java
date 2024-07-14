@@ -16,9 +16,7 @@ class Solution {
         for(int i: candidates) {
             this.count[i]++;
         }
-        for(int i: this.count) {
-            System.out.println(i);
-        }
+       
         this.solve(30);
         return new ArrayList<>(this.res);
     }
