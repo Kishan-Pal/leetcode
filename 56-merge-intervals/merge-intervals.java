@@ -4,15 +4,15 @@ class Solution {
         Arrays.sort(intervals, (a, b) -> {
             return a[0] - b[0];
         });
-        int k=1;
+        int k=0;
         res.add(intervals[0]);
         for(int i=1; i<intervals.length; i++) {
-            if(res.get(k-1)[1] >= intervals[i][0]) {
-                if(res.get(k-1)[1] > intervals[i][1]) {
+            if(res.get(k)[1] >= intervals[i][0]) {
+                if(res.get(k)[1] > intervals[i][1]) {
                     continue;
                 }
                 else {
-                    res.get(k-1)[1] = intervals[i][1];
+                    res.get(k)[1] = intervals[i][1];
                 }
             }
             else {
@@ -20,6 +20,6 @@ class Solution {
                 k = k + 1;
             }
         }
-        return res.toArray(new int[res.size()][]);
+        return res.toArray(new int[k+1][]);
     }
 }
