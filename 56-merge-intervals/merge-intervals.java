@@ -20,10 +20,6 @@ class Solution {
                 k = k + 1;
             }
         }
-        int[][] result = new int[res.size()][2];
-        for(int i=0; i<res.size(); i++) {
-            result[i] = res.get(i);
-        }
-        return result;
+        return res.toArray(new int[res.size()][]);
     }
 }
