@@ -24,6 +24,7 @@ class Solution {
         if(a == -1) {
             return -1;
         }
+        if(a == 0) return 0;
         a = a + 1;
         if(a == n-1) {
             nextAddress[0] = cur;
@@ -31,7 +32,7 @@ class Solution {
         }
         if(a == n+1) {
             cur.next = nextAddress[0];
-            return a;
+            return 0;
         }
         return a;
     }
