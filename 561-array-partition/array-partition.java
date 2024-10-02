@@ -12,20 +12,22 @@ class Solution {
         // }
 
         for(int i=0; i<=20001; i++) {
-            if(count[i] == 0) continue;
-            if(flag){
-                count[i]--;
-                sum += temp;
+            if(count[i] > 0) {
+                if(flag){
+                    count[i]--;
+                    sum += temp;
+                }
+                j = count[i] / 2;
+                sum += (i - var) * j;
+                if(count[i] % 2 == 1) {
+                    flag = true;
+                    temp = i - var;
+                }
+                else {
+                    flag = false;
+                }
             }
-            j = count[i] / 2;
-            sum += (i - var) * j;
-            if(count[i] % 2 == 1) {
-                flag = true;
-                temp = i - var;
-            }
-            else {
-                flag = false;
-            }
+            
         }
 
         return sum;
