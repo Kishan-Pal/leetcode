@@ -42,12 +42,12 @@ class Solution {
             }
             pre = pre.next;
         }
-        while(cur != null) {
+        if(cur != null) {
             pre.next = cur;
             cur = cur.next;
             pre = pre.next;
         }
-        while(cur2 != null) {
+        if(cur2 != null) {
             pre.next = cur2;
             cur2 = cur2.next;
             pre = pre.next;
