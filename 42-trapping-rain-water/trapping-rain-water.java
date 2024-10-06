@@ -1,6 +1,7 @@
 class Solution {
     public int trap(int[] height) {
-        int i, top = -1, temp;
+        int i, top = -1, temp, j;
+        Ele k;
         int[] res = new int[height.length];
         Stack<Ele> stack = new Stack<>();
         for(i=0; i<height.length-1; i++) {
@@ -28,8 +29,8 @@ class Solution {
                     stack.pop();
                     top--;
                 }
-                int j = i-1;
-                Ele k = stack.peek();
+                j = i-1;
+                k = stack.peek();
                 while(j != k.index) {
                     temp = Math.min(height[i], k.val) - height[j];
                     res[j] = ((temp > 0) ? temp : 0);
@@ -43,8 +44,8 @@ class Solution {
                 top++;
             }
             else if(height[i] == stack.peek().val) {
-                int j = i-1;
-                Ele k = stack.peek();
+                j = i-1;
+                k = stack.peek();
                 while(j != k.index) {
                     temp = Math.min(height[i], k.val) - height[j];
                     res[j] = ((temp > 0) ? temp : 0);
@@ -54,8 +55,8 @@ class Solution {
                 stack.push(new Ele(height[i], i));
             }
             else {
-                int j = i-1;
-                Ele k = stack.peek();
+                j = i-1;
+                k = stack.peek();
                 while(j != k.index) {
                     temp = Math.min(height[i], k.val) - height[j];
                     res[j] = ((temp > 0) ? temp : 0);
