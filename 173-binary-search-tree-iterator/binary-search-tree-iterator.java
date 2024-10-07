@@ -16,6 +16,7 @@
 class BSTIterator {
     private ArrayList<TreeNode> elements = new ArrayList<>();
     private int index = 0;
+    TreeNode pointer = new TreeNode(-1);
 
 
     public BSTIterator(TreeNode root) {
@@ -30,7 +31,10 @@ class BSTIterator {
     }
     
     public int next() {
-        return elements.get(index++).val;
+        TreeNode next = elements.get( index++ );
+        pointer = next;
+
+        return next.val;
     }
     
     public boolean hasNext() {
