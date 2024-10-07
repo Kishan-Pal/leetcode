@@ -16,10 +16,8 @@
 class Solution {
     public void flatten(TreeNode root) {
         
-        if(root == null || (root.left == null && root.right == null)) return;
-        //System.out.println("in " + root.val);
+        if(root == null || root.left == null && root.right == null) return;
         if(root.left == null) {
-            //System.out.println(root.val + " left null ");
             flatten(root.right);
             return;
         }
