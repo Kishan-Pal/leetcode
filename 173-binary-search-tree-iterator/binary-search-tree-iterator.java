@@ -14,34 +14,31 @@
  * }
  */
 class BSTIterator {
-    ArrayList<TreeNode> inOrder = new ArrayList<>();
-    int idx = 0;
+    private ArrayList<TreeNode> elements = new ArrayList<>();
+    private int index = 0;
     TreeNode pointer = new TreeNode(-1);
 
+
     public BSTIterator(TreeNode root) {
-        inOrderTraversal( root );
+        inorderTraversal(root);
+    }
+
+    private void inorderTraversal(TreeNode root) {
+        if(root == null) return;
+        inorderTraversal(root.left);
+        elements.add(root);
+        inorderTraversal(root.right);
     }
     
     public int next() {
-        TreeNode next = inOrder.get( idx++ );
+        TreeNode next = elements.get( index++ );
         pointer = next;
 
         return next.val;
     }
     
     public boolean hasNext() {
-        return idx != inOrder.size() ;
-    }
-
-    private void inOrderTraversal( TreeNode root )
-    {
-        if( root == null )
-        {
-            return;
-        }
-        inOrderTraversal( root.left );
-        inOrder.add( root );
-        inOrderTraversal( root.right );
+        return index != elements.size();
     }
 }
 
