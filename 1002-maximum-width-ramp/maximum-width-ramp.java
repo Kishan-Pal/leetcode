@@ -1,12 +1,11 @@
 class Solution {
     public int maxWidthRamp(int[] nums) {
         Stack<Ele> decreasing = new Stack<>();
-        Stack<Ele> increasing = new Stack<>();
         int res = 0;
-        Ele a, b;
+        decreasing.push(new Ele(nums[0], 0));
 
-        for(int i=0; i<nums.length; i++) {
-            if(decreasing.isEmpty() || nums[i] < decreasing.peek().ele) {
+        for(int i=1; i<nums.length; i++) {
+            if(nums[i] < decreasing.peek().ele) {
                 decreasing.push(new Ele(nums[i], i));
             }
             else {
