@@ -14,8 +14,6 @@ class Solution {
                 stack.push(s.charAt(i));
             }
         }
-        int n = stack.size();
-        n = (int) Math.ceil((double)n / 4);
-        return n;
+        return (stack.size()/2 + 1)/2;
     }
 }
