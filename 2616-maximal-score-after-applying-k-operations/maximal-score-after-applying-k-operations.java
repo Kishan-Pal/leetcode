@@ -17,7 +17,7 @@ class Solution {
         for (int i : nums) {
             pq.add(i);
         }
-        System.out.println(pq);
+        // System.out.println(pq);
         for(int i=0; i<k; i++) {
             int ele = pq.poll();
             result += ele;
