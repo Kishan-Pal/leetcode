@@ -1,16 +1,18 @@
 class Solution {
 
-    public void countRecursive(int[] nums, int maxOr, int curOr, int i, int[] count) {
+    public int countRecursive(int[] nums, int maxOr, int curOr, int i, int[] count) {
         if(i == nums.length) {
             if(curOr == maxOr) {
-                count[0]++;
+                return 1;
             }
-            return;
+            return 0;
         }
         //considering the current element
-        countRecursive(nums, maxOr, curOr|nums[i], i+1, count);
+        int count1 = countRecursive(nums, maxOr, curOr|nums[i], i+1, count);
         // ignoring the current elelemt
-        countRecursive(nums, maxOr, curOr, i+1, count);
+        int count2 = countRecursive(nums, maxOr, curOr, i+1, count);
+
+        return count1+count2;
     }
 
     public int countMaxOrSubsets(int[] nums) {
@@ -21,8 +23,8 @@ class Solution {
             maxOr |= i;
         }
         //System.out.println("Max OR = " + maxOr);
-        countRecursive(nums, maxOr, 0, 0, count);
+        return countRecursive(nums, maxOr, 0, 0, count);
         //System.out.println(count[0]);
-        return count[0];
+        //return count[0];
     }
 }
