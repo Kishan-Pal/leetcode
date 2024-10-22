@@ -1,5 +1,6 @@
 class Solution {
 
+    // finds the substring to solve from the start index
     public int getClosing(String expression, int startIndex) {
         if(expression.charAt(startIndex) == '&' || expression.charAt(startIndex) == '|' || expression.charAt(startIndex) == '!') {
             int count = 1;
@@ -25,6 +26,7 @@ class Solution {
                 //result = true;
                 while(i < expression.length()-1) {
                     int end = getClosing(expression, i);
+                    // solve the substring using recursion
                     boolean temp = parseBoolExpr(expression.substring(i, end));
                     if(temp == false) return false;
                     i = end+1;
@@ -35,6 +37,7 @@ class Solution {
                 //result = true;
                 while(i < expression.length()-1) {
                     int end = getClosing(expression, i);
+                    // solve the substring using recursion
                     boolean temp = parseBoolExpr(expression.substring(i, end));
                     if(temp == true) return true;
                     i = end+1;
@@ -44,6 +47,7 @@ class Solution {
                 i=2;
                 //result = true;
                 int end = getClosing(expression, i);
+                // solve the substring using recursion
                 boolean temp = parseBoolExpr(expression.substring(i, end));
                 return (!temp);
             case 'f':
@@ -52,7 +56,7 @@ class Solution {
                 return true;
             default:
         }
-        //System.out.println(getClosing(expression, 1));
+        // unreachable statement for the given inputs
         return false;
     }
 }
