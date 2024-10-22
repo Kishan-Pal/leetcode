@@ -52,7 +52,7 @@ class Solution {
                 return true;
             default:
         }
-        System.out.println(getClosing(expression, 1));
+        //System.out.println(getClosing(expression, 1));
         return false;
     }
 }
