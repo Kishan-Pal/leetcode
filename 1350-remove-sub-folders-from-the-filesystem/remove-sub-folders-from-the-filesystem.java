@@ -20,7 +20,8 @@ class Solution {
             if(removed[i]) continue;
             result.add(folder[i]);
             for(int j=i+1; j<folder.length; j++) {
-                if(getDir(folder[j]).startsWith(folder[i] + "/")) removed[j] = true;
+                if(getDir(folder[j]).startsWith(folder[i] + '/')) removed[j] = true;
+                else break;
             }
         }
 
