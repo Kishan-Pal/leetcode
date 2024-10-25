@@ -21,6 +21,7 @@ class Solution {
             result.add(folder[i]);
             for(int j=i+1; j<folder.length; j++) {
                 if(getDir(folder[j]).startsWith(folder[i] + '/')) removed[j] = true;
+                else break;
             }
         }
 
