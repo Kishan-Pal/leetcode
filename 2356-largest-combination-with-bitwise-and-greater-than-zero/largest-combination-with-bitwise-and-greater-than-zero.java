@@ -7,10 +7,12 @@ class Solution {
             int num = i;
             while(num > 0){
                 map[count] += num & 1;
-                maxi =  Math.max(map[count],maxi);
                 count++;
                 num = num >> 1;
             }
+        }
+        for(int i=0;i<25;i++){
+            maxi =  Math.max(map[i],maxi);
         }
         return maxi;
     }
