@@ -16,17 +16,7 @@ class Solution {
         for(int i=0; i<grid.length; i++) {
             for(int j=0; j<grid[0].length; j++) {
                 if(dfs(grid, i, j)) {
-                    //System.out.println("one in " + i + ", " + j);
                     count++;
-                    // for(int l=0; l<grid.length; l++) {
-                    //     for(int m=0; m<grid[0].length; m++) {
-                    //         if(visited[l][m])
-                    //             System.out.print(1 + " ");
-                    //         else 
-                    //             System.out.print(0 + " ");
-                    //     }
-                    //     System.out.println();
-                    // }
                 }
             }
         }
