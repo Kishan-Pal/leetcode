@@ -4,8 +4,8 @@ class Solution {
         int maxsum = Integer.MIN_VALUE;
 
         for(int i=0; i<nums.length; i++) {
-            cursum = Math.max(nums[i], nums[i] + cursum);
-            maxsum = Math.max(cursum, maxsum);
+            
+            maxsum = Math.max((cursum = Math.max(nums[i], nums[i] + cursum)), maxsum);
         }
         return maxsum;
         
