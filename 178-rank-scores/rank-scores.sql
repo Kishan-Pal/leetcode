@@ -1,6 +1,5 @@
-select s.score, 
-    (select count(distinct s2.Score)
-    from Scores s2
-    where s2.Score >= s.Score) as 'Rank'
-from Scores s
-order by s.Score desc
+select s.score, count(s2.score) as 'Rank'
+from Scores s, (select distinct score from Scores) as s2
+where s.score <= s2.score
+group by s.id
+order by s.score desc
