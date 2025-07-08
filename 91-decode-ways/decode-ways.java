@@ -14,7 +14,7 @@ class Solution {
         if(i < s.length()-1) {
             
             int num = Integer.valueOf(s.substring(i, i+2));
-            if(num <= 26 && num >=1) {
+            if(num <= 26 && num >=10) {
                 ways2 = dp(i+2, s);
             }
         }
