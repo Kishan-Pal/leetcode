@@ -9,9 +9,10 @@ class Solution {
         int end = -1;
         for(int i=0; i<s.length(); i++) {
             end = Math.max(end, lastocc[(int)s.charAt(i)]);
-            if(i == end || i == s.length()-1) {
+            if(i == end || i == s.length()-1 || end == s.length() - 1) {
                 res.add(end-begin+1);
                 begin = end+1;
+                i = end;
             }
         }
         return res;
