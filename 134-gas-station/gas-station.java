@@ -6,13 +6,12 @@ class Solution {
         for(int i=0; i<gas.length; i++) {
             int diff = gas[i] - cost[i];
             totalDiff += diff;
-            int fuelRemaining = fuel + diff;
-            if(fuelRemaining < 0) {
+            fuel = fuel + diff;
+            if(fuel < 0) {
                 fuel = 0;
                 startIndex = -1;
             }
             else {
-                fuel = fuel + diff;
                 if(startIndex == -1) {
                     startIndex = i;
                     // System.out.println("si = " + i);
