@@ -1,5 +1,6 @@
 class Solution {
     public String convert(String s, int numRows) {
+        if(numRows == 1) return s;
         StringBuilder res = new StringBuilder();
         List<List<Character>> graph = new ArrayList<>();
         for(int i=0; i<numRows; i++) {
@@ -12,7 +13,7 @@ class Solution {
             graph.get(i).add(s.charAt(k));
             if(i == 0) inc = 1;
             if(i == numRows-1) inc = -1;
-            i = Math.max(i + inc, 0);
+            i = i + inc;
         }
 
         for(i=0; i<numRows; i++) {
