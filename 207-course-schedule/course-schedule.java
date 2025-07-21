@@ -17,51 +17,45 @@ class Node {
 
 class Solution {
     public Map<Integer, Node> map;
-    public Map<Integer, Boolean> visited;
+    public Set<Integer> visiting;
+    public Set<Integer> visited;
+
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         map = new HashMap<>();
-        for(int[] link: prerequisites) {
-            Node left, right;
-            if(map.containsKey(link[0])) {
-                left = map.get(link[0]);
-            }
-            else {
-                left = new Node(link[0]);
-                map.put(link[0], left);
-            }
-            if(map.containsKey(link[1])) {
-                right = map.get(link[1]);
-            }
-            else {
-                right = new Node(link[1]);
-                map.put(link[1], right);
-            }
-            left.list.add(right);
+
+        // Create the graph
+        for (int[] link : prerequisites) {
+            Node from = map.computeIfAbsent(link[0], k -> new Node(k));
+            Node to = map.computeIfAbsent(link[1], k -> new Node(k));
+            from.list.add(to);
         }
-        visited = new HashMap<>();
-        for(Map.Entry<Integer, Node> entry: map.entrySet()) {
-            if(!visited.containsKey(entry.getKey())) {
-                int res = dfs(entry.getValue());
-                if(res == -1) return false;
+
+        visiting = new HashSet<>();
+        visited = new HashSet<>();
+
+       
+        for (int i = 0; i < numCourses; i++) {
+            Node node = map.getOrDefault(i, new Node(i)); 
+            map.putIfAbsent(i, node); 
+            if (!visited.contains(i)) {
+                if (dfs(node)) return false;
             }
         }
         return true;
     }
-    public int dfs(Node cur) {
-        if(cur == null) return 0;
-        if(!visited.containsKey(cur.id)) {
-            visited.put(cur.id, true);
-        }
-        else if(visited.get(cur.id) == true) return -1;
-        else return 0;
-        visited.put(cur.id, true);
-        for(Node neighbor: cur.list) {
-            if(neighbor == null) continue;
-            int res = dfs(neighbor);
-            if(res == -1) return -1;
-        }
-        visited.put(cur.id, false);
-        return 0;
 
+    private boolean dfs(Node node) {
+        if (visiting.contains(node.id)) return true; 
+        if (visited.contains(node.id)) return false; 
+
+        visiting.add(node.id);
+
+        for (Node neighbor : node.list) {
+            if (dfs(neighbor)) return true;
+        }
+
+        visiting.remove(node.id);
+        visited.add(node.id);
+        return false;
     }
 }
