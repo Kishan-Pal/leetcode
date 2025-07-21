@@ -1,7 +1,7 @@
 class Solution{
     static{
         for(int i = 0; i < 100000; i++){
-            longestPrefix(" ");
+            longestPrefix("something sometht ");
         }
     }
     public static String longestPrefix(String s){
