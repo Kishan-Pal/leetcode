@@ -1,9 +1,9 @@
 class Solution{
-    static{
-        for(int i = 0; i < 100; i++){
-            longestPrefix(" ");
-        }
-    }
+    // static{
+    //     for(int i = 0; i < 100; i++){
+    //         longestPrefix(" ");
+    //     }
+    // }
     public static String longestPrefix(String s){
         int n = s.length();
         char[] ch = s.toCharArray();
