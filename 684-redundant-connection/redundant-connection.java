@@ -33,17 +33,17 @@ class Disjoint {
         int parentv = find(v);
 
         if(parentu == parentv) return false;
-
-        if(rank[parentu] > rank[parentv]) {
-            parent[parentv] = parentu;
-        }
-        else if(rank[parentv] > rank[parentu]) {
-            parent[parentu] = parentv;
-        }
-        else {
-            parent[parentu] = parentv;
-            rank[parentv]++;
-        }
+        parent[parentu] = parentv;
+        // if(rank[parentu] > rank[parentv]) {
+        //     parent[parentv] = parentu;
+        // }
+        // else if(rank[parentv] > rank[parentu]) {
+        //     parent[parentu] = parentv;
+        // }
+        // else {
+        //     parent[parentu] = parentv;
+        //     rank[parentv]++;
+        // }
         return true;
     }
 }
