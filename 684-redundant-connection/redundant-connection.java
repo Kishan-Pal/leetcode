@@ -1,36 +1,49 @@
 class Solution {
     public int[] findRedundantConnection(int[][] edges) {
-        List<Integer>[] graph = new ArrayList[edges.length+1];
 
-        for(int i=0; i<edges.length+1; i++) {
-            graph[i] = new ArrayList<>();
-        }
-
+        Disjoint ds = new Disjoint(edges.length+1);
         for(int[] edge: edges) {
-            int node1 = edge[0];
-            int node2 = edge[1];
-
-            boolean[] visited = new boolean[edges.length+1];
-            if(dfs(graph, node1, node2, visited)) {
-                return new int[]{node1, node2};
+            if(!ds.union(edge[0], edge[1])) {
+                return new int[]{edge[0], edge[1]};
             }
-
-            graph[node1].add(node2);
-            graph[node2].add(node1);
-
         }
         return new int[]{0, 0};
     }
+}
 
-    public boolean dfs(List<Integer>[] graph, int src, int dst, boolean[] visited) {
-        if(visited[src]) return false;
-        if(src == dst) return true;
-        visited[src] = true;
-        for(int i: graph[src]) {
-            if(dfs(graph, i, dst, visited)) {
-                return true;
-            }
+class Disjoint {
+    int[] parent;
+    int[] rank;
+    Disjoint(int n) {
+        parent = new int[n];
+        rank = new int[n];
+        for(int i=0; i<n; i++) {
+            parent[i] = i;
         }
-        return false;
+    }
+
+    private int find(int i) {
+        if(parent[i] == i) {
+            return i;
+        }
+        return parent[i] = find(parent[i]);
+    }
+    public boolean union(int u, int v) {
+        int parentu = find(u);
+        int parentv = find(v);
+
+        if(parentu == parentv) return false;
+
+        if(rank[parentu] > rank[parentv]) {
+            parent[parentv] = parentu;
+        }
+        else if(rank[parentv] > rank[parentu]) {
+            parent[parentu] = parentv;
+        }
+        else {
+            parent[parentu] = parentv;
+            rank[parentv]++;
+        }
+        return true;
     }
 }
