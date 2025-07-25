@@ -20,6 +20,7 @@ class Node {
             while(i<n && path.charAt(i) != '/') i++;
             cur = cur.add(path.substring(left, i));
             left = i;
+            if(cur.isEnd) return;
         }
         cur.isEnd = true;
     }
