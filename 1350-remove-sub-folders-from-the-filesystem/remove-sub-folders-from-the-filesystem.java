@@ -1,30 +1,49 @@
-class Solution {
-
-    public String getDir(String folder1) {
-        for(int i=folder1.length()-1; i>=0; i--) {
-            if(folder1.charAt(i) == '/') {
-                return folder1.substring(0, i+1);
-            }
-        }
-        return "";
+class Node {
+    String curName;
+    Map<String, Node> children;
+    boolean isEnd = false;
+    Node(String name) {
+        this.curName = name;
+        children = new HashMap<>();
     }
 
-    public List<String> removeSubfolders(String[] folder) {
-        List<String> result = new ArrayList<String>();
-        Arrays.sort(folder);
-        // for(String i: folder) {
-        //     System.out.println(i);
-        // }
-        boolean[] removed = new boolean[folder.length];
-        for(int i=0; i<folder.length; i++) {
-            if(removed[i]) continue;
-            result.add(folder[i]);
-            for(int j=i+1; j<folder.length; j++) {
-                if(getDir(folder[j]).startsWith(folder[i] + '/')) removed[j] = true;
-                else break;
-            }
-        }
+    public Node add(String child) {
+        this.children.computeIfAbsent(child, k -> new Node(child));
+        return this.children.get(child);
+    }
 
-        return result;
+    public void addFull(String path) {
+        Node cur = this;
+        int left = 0;
+        int n = path.length();
+        for(int i=1; i<n; i++) {
+            while(i<n && path.charAt(i) != '/') i++;
+            cur = cur.add(path.substring(left, i));
+            left = i;
+        }
+        cur.isEnd = true;
+    }
+}
+
+
+class Solution {
+    public List<String> removeSubfolders(String[] folder) {
+        Node root = new Node("");
+        for(String s: folder) {
+            root.addFull(s);
+        }
+        List<String> res = new ArrayList<>();
+        dfs(root, res, new StringBuffer());
+        return res;
+    }
+
+    public void dfs(Node cur, List<String> res, StringBuffer curRes) {
+        if(cur.isEnd) {
+            res.add(curRes.toString());
+            return;
+        }
+        for(Map.Entry<String, Node> child: cur.children.entrySet()) {
+            dfs(child.getValue(), res, new StringBuffer(curRes).append(child.getKey()));
+        }
     }
 }
