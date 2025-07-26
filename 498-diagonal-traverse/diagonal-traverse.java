@@ -18,7 +18,7 @@ class Solution {
                 else if(curi == 0) { // hit top
                     inci = 1;
                     incj = -1;
-                    curj -= incj;
+                    curj += 1;
                 }
                 else {
                     curi += inci;
