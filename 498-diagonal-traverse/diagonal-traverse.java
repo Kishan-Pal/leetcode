@@ -15,7 +15,7 @@ class Solution {
                     incj = -1;
                     curj += 1;
                 }
-                else if(curi == 0 && curj == mat[0].length - 1 || curj == mat[0].length - 1) { // hit top right corner or right
+                else if(curj == mat[0].length - 1) { // hit top right corner or right
                     inci = 1;
                     incj = -1;
                     curi += 1;
