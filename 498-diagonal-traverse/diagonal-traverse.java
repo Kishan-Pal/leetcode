@@ -13,12 +13,12 @@ class Solution {
                 if(curj == mat[0].length - 1) { // hit top right corner or right
                     inci = 1;
                     incj = -1;
-                    curi += 1;
+                    curi += inci;
                 }
                 else if(curi == 0) { // hit top
                     inci = 1;
                     incj = -1;
-                    curj += 1;
+                    curj -= incj;
                 }
                 else {
                     curi += inci;
