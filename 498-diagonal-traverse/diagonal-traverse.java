@@ -14,15 +14,13 @@ class Solution {
                     inci = 1;
                     incj = -1;
                     curi += 1;
+                    continue;
                 }
                 else if(curi == 0) { // hit top
                     inci = 1;
                     incj = -1;
                     curj += 1;
-                }
-                else {
-                    curi += inci;
-                    curj += incj;
+                    continue;
                 }
             }
             else{
@@ -30,17 +28,17 @@ class Solution {
                     inci = -1;
                     incj = 1;
                     curj += 1;
+                    continue;
                 }
                 else if(curj == 0) { // hit left
                     inci = -1;
                     incj = 1;
                     curi += 1;
-                }
-                else {
-                    curi += inci;
-                    curj += incj;
+                    continue;
                 }
             }
+            curi += inci;
+            curj += incj;
             
         }
         return res;
