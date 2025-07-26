@@ -26,12 +26,7 @@ class Solution {
                 }
             }
             else{
-                if(curi == mat.length - 1 && curj > 0) { // hit bottom
-                    inci = -1;
-                    incj = 1;
-                    curj += 1;
-                }
-                else if(curi == mat.length -1 && curj == 0) { // hit bottom left corner
+                if(curi == mat.length - 1 || curi == mat.length -1 && curj == 0) { // hit bottom or bottom left corner
                     inci = -1;
                     incj = 1;
                     curj += 1;
