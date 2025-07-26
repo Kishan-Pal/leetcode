@@ -28,7 +28,7 @@ class Solution {
         boolean curRes = true;
         for(int neighbor: graph[cur]) {
             curRes = curRes && dfs(neighbor, graph, visited, isSafe);
-            
+            if(!curRes) return false;
 
         }
         if(curRes == true) {
