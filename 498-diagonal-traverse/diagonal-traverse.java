@@ -13,7 +13,7 @@ class Solution {
                 if(curj == mat[0].length - 1) { // hit top right corner or right
                     inci = 1;
                     incj = -1;
-                    curi += inci;
+                    curi += 1;
                 }
                 else if(curi == 0) { // hit top
                     inci = 1;
