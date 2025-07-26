@@ -30,7 +30,7 @@ class Solution {
                     curj += incj;
                 }
             }
-            else if(inci == 1 && incj == -1) {
+            else{
                 if(curi == mat.length - 1 && curj > 0) { // hit bottom
                     inci = -1;
                     incj = 1;
