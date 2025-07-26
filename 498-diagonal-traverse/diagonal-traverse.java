@@ -31,7 +31,7 @@ class Solution {
                     incj = 1;
                     curj += 1;
                 }
-                else if(curi < mat.length - 1 && curj == 0) { // hit left
+                else if(curj == 0) { // hit left
                     inci = -1;
                     incj = 1;
                     curi += 1;
