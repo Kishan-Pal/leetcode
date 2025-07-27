@@ -1,7 +1,7 @@
 class Solution {
     public int countOdds(int low, int high) {
-        int count = high - low + 1;
+        // int count = high - low + 1;
 
-        return count / 2 + (count & 1 & low);
+        return (high - low + 1) / 2 + ((high - low + 1) & 1 & low);
     }
 }
