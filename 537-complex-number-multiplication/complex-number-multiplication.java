@@ -8,7 +8,8 @@ class Solution {
 
         comp3[0] = comp1[0] * comp2[0] - (comp1[1] * comp2[1]);
         comp3[1] = comp1[0] * comp2[1] + comp1[1] * comp2[0];
-        return comp3[0] + "+" + comp3[1] + "i";
+        StringBuilder res = new StringBuilder().append(comp3[0]).append('+').append(comp3[1]).append('i');
+        return res.toString();
     }
 
     public int[] getComplex(String num) {
