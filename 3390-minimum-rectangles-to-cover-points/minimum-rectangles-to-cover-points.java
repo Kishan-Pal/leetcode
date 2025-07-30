@@ -8,7 +8,8 @@ class Solution {
         // }
         int count = 0;
         int num;
-        for(int i=0; i<points.length;) {
+        int i=0;
+        while(i<points.length) {
             num = points[i][0];
             count++;
             while(i<points.length && points[i][0] - num <= w) i++;
