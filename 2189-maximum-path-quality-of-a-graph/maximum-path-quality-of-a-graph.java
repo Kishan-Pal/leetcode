@@ -34,14 +34,14 @@ class Solution {
             }
             else return;
         }
+        set[u]++;
         for(Edge e: graph[u]) {
             if(curTime + e.w <= maxTime) {
-                set[e.v]++;
                 dfs(graph, values, e.v, maxTime, curTime + e.w, set);
-                set[e.v]--;
             }
             
         }
+        set[u]--;
     }
 
     public int getTotal(int[] set, int[] values) {
