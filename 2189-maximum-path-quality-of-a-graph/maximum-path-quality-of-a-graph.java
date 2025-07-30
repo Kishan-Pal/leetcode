@@ -34,11 +34,12 @@ class Solution {
             }
             else return;
         }
-        if(curTime > maxTime) return;
         set[u]++;
         for(Edge e: graph[u]) {
+            if(curTime + e.w <= maxTime) {
+                dfs(graph, values, e.v, maxTime, curTime + e.w, set);
+            }
             
-            dfs(graph, values, e.v, maxTime, curTime + e.w, set);
         }
         set[u]--;
     }
