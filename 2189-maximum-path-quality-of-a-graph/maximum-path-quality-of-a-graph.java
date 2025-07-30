@@ -28,11 +28,8 @@ class Solution {
 
     public void dfs(List<Edge>[] graph, int[] values, int u, int maxTime, int curTime, int[] set) {
         if(u == 0) {
-            if(curTime <= maxTime) {
-                int tempRes = getTotal(set, values);
-                res = Math.max(res, tempRes);
-            }
-            else return;
+            res = Math.max(res, getTotal(set, values));
+
         }
         set[u]++;
         for(Edge e: graph[u]) {
