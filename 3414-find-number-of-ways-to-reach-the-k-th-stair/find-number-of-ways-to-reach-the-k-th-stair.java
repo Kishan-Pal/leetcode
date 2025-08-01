@@ -44,6 +44,8 @@ class Solution {
         }
         else {
             dpk = new Integer[32];
+            dpk[0] = 0;
+            dpk[1] = 0;
             dp.put(k, dpk);
         }
 
